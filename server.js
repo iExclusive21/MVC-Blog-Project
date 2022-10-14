@@ -2,18 +2,19 @@ const express = require('express')
 const app = express()
 const port = 3002;
 
+app.use(express.static('public'));
 
-// const handlebars = require('express-handlebars')
+const handlebars = require("express-handlebars");
 
 
-// app.set('view engine', 'handlebars')
-// app.engine('handlebars', handlebars({
-//     layoutsDir: `${__dirname}/views/layouts`
-// }))
+app.engine('handlebars', handlebars.engine({
+    layoutsDir: `${__dirname}/views/layouts`
+}));
+app.set('view engine', 'handlebars');
 // app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send('Hello World1234 !')
+    res.render('main', {layout: 'index' });
 });
 
 app.listen(port,() => {
