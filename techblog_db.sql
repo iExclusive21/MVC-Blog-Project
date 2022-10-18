@@ -1,0 +1,1 @@
+SELECT * FROM techblog_db.project;
