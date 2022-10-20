@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const description = document.querySelector('#project-desc1').value.trim();
   
     if (description) {
-      const response = await fetch(`/api/projects`, {
+      const response = await fetch(`/api/comments`, {
         method: 'POST',
         body: JSON.stringify({ description }),
         headers: {
@@ -21,4 +21,11 @@ const newFormHandler = async (event) => {
       }
     }
   };
+
+  document
+  .querySelector('.new-project-form')
+  .addEventListener('submit', newFormHandler);
+
+const projectsDelete = document
+  .querySelector('.project-list');
 

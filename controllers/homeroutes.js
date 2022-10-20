@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -14,12 +14,27 @@ router.get('/', async (req, res) => {
       ],
     });
 
+    //Trying to see if this works with the comment route 
+    const commentData = await Comment.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ['name'],
+          },
+        ],
+      });
+
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', {
       projects,
+      logged_in: req.session.logged_in
+    });
+    res.render('homepage', {
+      comments,
       logged_in: req.session.logged_in
     });
   } catch (err) {
