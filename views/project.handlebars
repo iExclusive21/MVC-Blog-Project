@@ -12,7 +12,16 @@
   {{!-- <p>
     <button class="btn btn-primary">Comment</button>
   </p> --}}
-
-  {{>comment}}
-
+  {{!-- the > sign means we're calling a partial --}}
+  {{>comment comments}}
 </div>
+
+
+  {{#each comments as |comment| }}
+  <div style="display: block">
+    <p>{{comment.description}}
+      {{format_date comment.date_created}}
+    </p>
+
+    </div>
+  {{/each}}

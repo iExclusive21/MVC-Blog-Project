@@ -16,14 +16,15 @@ const newFormHandler = async (event) => {
         },
       });
       if (response.ok) {
-        // document.location.replace('/profile');
+        console.log("HAPPY HALLOWEEN")
+        document.location.replace(`/project/${project_id}`);
       } else {
         alert('Failed to create project');
       }
     }
   };
 
-//create function that will make a get fetch from api and the api route will return all of the comments along with the user information. Inside of the callback of that fetch, i'll write all of that information to this page. The function will make a query to the database and it will add all of the comments to the database. On line 20, whenever a user successfuly submits a comment you just run that same function again. 
+//create function that will make a get fetch from api and the api route will return all of the comments along with the user information. Inside of the callback of that fetch, it'll write all of that information to this page. The function will make a query to the database and it will add all of the comments to the database. On line 20, whenever a user successfuly submits a comment you just run that same function again. 
 
 //Will prolly have to make a new route. 
 
